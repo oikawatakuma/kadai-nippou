@@ -30,18 +30,18 @@ public class EmployeeValidator {
         return errors;
     }
 
-    private static String _validateCode(String code, boolean code_duplicate_check_flag){
+    private static String _validateCode(String code, Boolean code_duplicate_check_flag){
         if(code == null || code.equals("")){
             return "社員番号を入力してください。";
         }
 
         if(code_duplicate_check_flag){
             EntityManager em = DBUtil.createEntityManager();
-            long employee_count = (long)em.createNamedQuery("checkRegistereCode", Long.class)
+            long employees_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class)
                                            .setParameter("code", code)
                                             .getSingleResult();
             em.close();
-            if(employee_count > 0){
+            if(employees_count > 0){
                 return "入力された社員番号の情報は既に存在しています。";
             }
         }
