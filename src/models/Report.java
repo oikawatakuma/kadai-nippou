@@ -26,7 +26,7 @@ import javax.persistence.Table;
             query = "SELECT COUNT(r) FROM Report AS r"
             ),
     @NamedQuery(
-            name = "getMyReports",
+            name = "getMyAllReports",
             query = "SELECT r FROM Report AS r WHERE r.employee = :employee ORDER BY r.id DESC"
             ),
     @NamedQuery(
